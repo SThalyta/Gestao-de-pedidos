@@ -1,4 +1,6 @@
+require('dotenv').config();
+
 module.exports = {
-    jwtSecret: 'chave-super-segura-do-sistema',
-    jwtExpiresIn: '8h'
+  jwtSecret: process.env.JWT_SECRET,
+  jwtExpiresIn: process.env.JWT_EXPIRES_IN,
 };
