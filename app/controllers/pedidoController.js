@@ -84,7 +84,7 @@ const PedidoController = {
   },
 
   // Atualizar itens do pedido
-updatePedidoItens: async (req, res) => {
+  updatePedidoItens: async (req, res) => {
   const client = await pool.connect();
   const { id } = req.params;
   const { novos_itens } = req.body;
