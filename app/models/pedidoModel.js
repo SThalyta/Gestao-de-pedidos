@@ -14,7 +14,9 @@ const PedidoModel = {
   async adicionarItem(id_pedido, id_item, quantidade, observacao, subtotal) {
     await pool.query(
       `INSERT INTO pedido_item (id_pedido, id_item, quantidade, observacao, subtotal)
-       VALUES ($1, $2, $3, $4, $5)`,
+       VALUES ($1, $2, $3, $4, $5)
+       ON CONFLICT (id_pedido, id_item)
+       DO UPDATE SET quantidade = EXCLUDED.quantidade, subtotal = EXCLUDED.subtotal, observacao = EXCLUDED.observacao`,
       [id_pedido, id_item, quantidade, observacao, subtotal]
     );
   },
