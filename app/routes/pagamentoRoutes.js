@@ -7,7 +7,7 @@ const authorizeRoles = require('../middlewares/roleMiddleware');
 router.post(
   '/pagamentos',
   authMiddleware,
-  authorizeRoles('Caixa'),
+  authorizeRoles('Admin','Caixa'),
   PagamentoController.realizarPagamento
 );
 

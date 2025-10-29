@@ -11,21 +11,21 @@ router.get('/cardapio/:id', CardapioController.getItemById);
 router.post(
   '/cardapio',
   authMiddleware,
-  authorizeRoles('Caixa'),
+  authorizeRoles('Admin'),
   CardapioController.createItem
 );
 
 router.patch(
   '/cardapio/:id',
   authMiddleware,
-  authorizeRoles('Caixa'),
+  authorizeRoles('Admin'),
   CardapioController.updateItem
 );
 
 router.delete(
   '/cardapio/:id',
   authMiddleware,
-  authorizeRoles('Caixa'),
+  authorizeRoles('Admin'),
   CardapioController.deleteItem
 );
 

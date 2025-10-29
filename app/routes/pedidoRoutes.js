@@ -8,7 +8,7 @@ const authorizeRoles = require('../middlewares/roleMiddleware');
 router.post(
   '/pedidos',
   authMiddleware,
-  authorizeRoles('Garçom'),
+  authorizeRoles('Admin','Garçom'),
   PedidoController.createPedido
 );
 
@@ -16,7 +16,7 @@ router.post(
 router.get(
   '/pedidos',
   authMiddleware,
-  authorizeRoles('Garçom', 'Cozinha', 'Caixa'),
+  authorizeRoles('Admin','Garçom', 'Cozinha', 'Caixa'),
   PedidoController.getAllPedidos
 );
 
@@ -24,7 +24,7 @@ router.get(
 router.get(
   '/pedidos/:id',
   authMiddleware,
-  authorizeRoles('Garçom', 'Cozinha', 'Caixa'),
+  authorizeRoles('Admin', 'Garçom', 'Cozinha', 'Caixa'),
   PedidoController.getPedidoById
 );
 
@@ -32,7 +32,7 @@ router.get(
 router.patch(
   '/pedidos/:id/itens',
   authMiddleware,
-  authorizeRoles('Garçom'),
+  authorizeRoles('Admin', 'Garçom'),
   PedidoController.updatePedidoItens
 );
 
@@ -40,7 +40,7 @@ router.patch(
 router.delete(
   '/pedidos/:id/item/:id_item',
   authMiddleware,
-  authorizeRoles('Garçom'),
+  authorizeRoles('Admin', 'Garçom'),
   PedidoController.removeItem
 );
 
@@ -48,7 +48,7 @@ router.delete(
 router.patch(
   '/pedidos/:id/status',
   authMiddleware,
-  authorizeRoles('Cozinha', 'Caixa'),
+  authorizeRoles('Admin', 'Garçom', 'Cozinha', 'Caixa'),
   PedidoController.updateStatus
 );
 
